@@ -16,3 +16,4 @@ sistema     etc/lact/config.yaml
 sistema     etc/udev/rules.d/99-intel-rapl.rules
 sistema     etc/modules-load.d/ntsync.conf
 sistema     etc/locale.conf
+sistema     etc/modules-load.d/nct6775.conf

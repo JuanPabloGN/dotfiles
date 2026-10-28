@@ -1,11 +1,13 @@
 #!/bin/bash
 # Temperatura de CPU (11900K) y GPU (RX 6900 XT) para la barra de Omarchy (salida estilo Waybar)
 hw() { for h in /sys/class/hwmon/hwmon*; do [ "$(cat $h/name)" = "$1" ] && echo $h && return; done; }
-c=$(hw coretemp); g=$(hw amdgpu); k=$(hw kraken2)
+c=$(hw coretemp); g=$(hw amdgpu); k=$(hw kraken2); n=$(hw nct6798)
 cpu=$(( $(cat $c/temp1_input) / 1000 ))
 gpu_edge=$(( $(cat $g/temp1_input) / 1000 )); gpu_hot=$(( $(cat $g/temp2_input) / 1000 ))
 gpu_w=$(( $(cat $g/power1_average 2>/dev/null || cat $g/power1_input) / 1000000 )); gpu_uso=$(cat $g/device/gpu_busy_percent)
 liq=$([ -n "$k" ] && awk '{printf "%.1f", $1/1000}' $k/temp1_input)
+# CPUTIN de la placa (sensor junto al zócalo y los VRM); requiere el módulo nct6775
+vrm=$([ -n "$n" ] && echo $(( $(cat $n/temp2_input) / 1000 )))
 clase=""; { [ $cpu -ge 85 ] || [ $gpu_hot -ge 95 ]; } && clase="active"
-printf '{"text":"󰻠 %s°  󰢮 %s°","tooltip":"CPU: %s °C\\nGPU: %s °C (hotspot %s °C), %s W, %s%%\\nLíquido Kraken: %s °C","class":"%s"}\n' \
-  "$cpu" "$gpu_edge" "$cpu" "$gpu_edge" "$gpu_hot" "$gpu_w" "$gpu_uso" "${liq:---}" "$clase"
+printf '{"text":"󰻠 %s°  󰢮 %s°","tooltip":"CPU: %s °C\\nGPU: %s °C (hotspot %s °C), %s W, %s%%\\nVRM/zócalo (CPUTIN): %s °C\\nLíquido Kraken: %s °C","class":"%s"}\n' \
+  "$cpu" "$gpu_edge" "$cpu" "$gpu_edge" "$gpu_hot" "$gpu_w" "$gpu_uso" "${vrm:---}" "${liq:---}" "$clase"

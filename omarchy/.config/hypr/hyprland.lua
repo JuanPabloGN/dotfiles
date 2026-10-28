@@ -37,12 +37,13 @@ o.window("cs2", { fullscreen = true, idle_inhibit = "fullscreen" })
 -- Juegos de Steam (Proton): sin protector de pantalla ni bloqueo mientras están en pantalla completa (jugando con mando)
 o.window("steam_app_.*", { idle_inhibit = "fullscreen" })
 
--- Escritorios fijos: 1 Zen y Chromium · 2 libre · 3 Steam · 4 terminal (Ghostty) · 5 Vesktop
+-- Escritorios fijos: 1 Zen y Chromium · 2 libre · 3 Steam · 4 terminal (Ghostty) · 5 Vesktop · 6 Claude
 o.window("zen", { workspace = "1" })
 o.window("vesktop", { workspace = "5 silent" })
 o.window("chromium", { workspace = "1" })
 o.window("steam", { workspace = "3" })
 o.window("com.mitchellh.ghostty", { workspace = "4" })
+o.window("org.omarchy.agent", { workspace = "6" })
 
 -- Terminal más transparente para que se vea el fondo con desenfoque (Omarchy usa 0.985/0.96)
 o.window("com.mitchellh.ghostty", { tag = "-default-opacity", opacity = "0.88 0.8" })

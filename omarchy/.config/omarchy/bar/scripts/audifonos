@@ -1,0 +1,13 @@
+#!/bin/bash
+# Batería de los Logitech G PRO X Wireless para la barra de Omarchy (salida estilo Waybar)
+b=$(headsetcontrol -b -o json 2>/dev/null | jq -c '.devices[0].battery // empty')
+case "$(jq -r '.status // empty' <<<"$b" 2>/dev/null)" in
+  BATTERY_AVAILABLE)
+    n=$(jq -r '.level' <<<"$b")
+    printf '{"text":"󰋋 %s%%","tooltip":"PRO X Wireless: %s%% de batería"}\n' "$n" "$n" ;;
+  BATTERY_CHARGING)
+    printf '{"text":"󰋋 󱐋","tooltip":"PRO X Wireless: cargando"}\n' ;;
+  *)
+    # Texto vacío hace que la barra muestre el JSON crudo, así que se deja el ícono
+    printf '{"text":"󰋋 --","tooltip":"PRO X Wireless apagados o sin conexión"}\n' ;;
+esac

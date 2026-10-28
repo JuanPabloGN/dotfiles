@@ -1,0 +1,18 @@
+# grupo     ruta (relativa a ~ para comun/omarchy, a / para sistema)
+# comun = sirve en cualquier distro · omarchy = propio de Omarchy · sistema = archivos de /etc (requiere sudo)
+comun       .config/MangoHud
+comun       .local/share/easyeffects
+comun       .config/systemd/user/kraken-curva.service
+comun       .local/bin/bateria-audifonos
+omarchy     .config/hypr
+omarchy     .config/omarchy/shell.json
+omarchy     .config/omarchy/bar
+omarchy     .config/omarchy/plugins
+omarchy     .config/omarchy/branding
+omarchy     .config/ghostty
+omarchy     .local/bin/modo-juego
+omarchy     .local/share/applications/steam.desktop
+sistema     etc/lact/config.yaml
+sistema     etc/udev/rules.d/99-intel-rapl.rules
+sistema     etc/modules-load.d/ntsync.conf
+sistema     etc/locale.conf

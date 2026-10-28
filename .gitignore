@@ -1,0 +1,3 @@
+# Respaldos automáticos que dejan los cambios de configuración
+*.bak.*
+*.bak

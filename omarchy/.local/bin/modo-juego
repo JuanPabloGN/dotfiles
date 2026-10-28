@@ -1,0 +1,13 @@
+#!/bin/bash
+# Modo juego: sin animaciones, sin blur y notificaciones silenciadas. Se activa/desactiva con Super + Ctrl + G.
+f="$HOME/.local/state/omarchy/toggles/hypr/modo-juego.lua"
+if [[ -f $f ]]; then
+  rm -f "$f"; estado="desactivado"
+else
+  mkdir -p "$(dirname "$f")"
+  printf '%s\n' 'hl.config({ animations = { enabled = false }, decoration = { blur = { enabled = false } } })' > "$f"
+  estado="activado"
+fi
+hyprctl reload >/dev/null
+omarchy toggle notification silencing >/dev/null 2>&1
+notify-send -t 2000 "🎮 Modo juego $estado"

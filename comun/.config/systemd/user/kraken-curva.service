@@ -1,0 +1,11 @@
+[Unit]
+Description=Curva de ventiladores del NZXT Kraken (liquidctl)
+
+[Service]
+Type=oneshot
+ExecStartPre=/usr/bin/sleep 5
+ExecStart=/usr/bin/liquidctl --match kraken initialize
+ExecStart=/usr/bin/liquidctl --match kraken set fan speed 30 40  35 55  40 75  45 90  50 100
+
+[Install]
+WantedBy=default.target

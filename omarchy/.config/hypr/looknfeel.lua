@@ -74,3 +74,8 @@ hl.animation({ leaf = "workspaces", enabled = true, speed = 4, bezier = "easeOut
 -- Direct scanout para juegos en pantalla completa: el juego va directo a la pantalla sin pasar por el compositor (menos latencia)
 -- 2 = solo cuando la ventana se declara como juego/video
 hl.config({ render = { direct_scanout = 2 } })
+
+-- Opt another application in to Omarchy's standard transparency.
+-- Find its class with: hyprctl clients
+-- o.transparent_window("my-app")
+-- o.transparent_window("my-app", "0.9 0.85") -- Custom active/inactive opacity.

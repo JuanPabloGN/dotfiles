@@ -34,8 +34,15 @@ o.window({ class = "steam", title = "Steam" }, { float = false })
 -- CS2 abre como ventana sin bordes, que Hyprland no considera pantalla completa (sin VRR ni pausa del fondo animado)
 o.window("cs2", { fullscreen = true, idle_inhibit = "fullscreen" })
 
+-- Tomb Raider 2013 en modo ventana "Maximizado" (así la interfaz no se sale de la pantalla): Omarchy ignora
+-- maximizar y lo deja en mosaico, así que se fuerza pantalla completa y se ignoran sus pedidos de salir de ella
+o.window("steam_app_203160", { fullscreen = true, suppress_event = "fullscreen maximize" })
+
 -- Juegos de Steam (Proton): sin protector de pantalla ni bloqueo mientras están en pantalla completa (jugando con mando)
 o.window("steam_app_.*", { idle_inhibit = "fullscreen" })
+
+-- Juegos dentro de gamescope (Tomb Raider 2013): la ventana es de clase "gamescope", no "steam_app_*"
+o.window("gamescope", { fullscreen = true, idle_inhibit = "fullscreen" })
 
 -- Escritorios fijos: 1 Zen y Chromium · 2 libre · 3 Steam · 4 terminal (Ghostty) · 5 Vesktop · 6 Claude
 o.window("zen", { workspace = "1" })

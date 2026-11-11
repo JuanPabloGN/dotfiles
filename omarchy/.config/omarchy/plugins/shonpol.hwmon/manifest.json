@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "shonpol.hwmon",
+  "name": "Hardware Monitor",
+  "version": "1.0.0",
+  "author": "shonpol",
+  "description": "CPU and GPU temperatures on the bar, with a panel for load, clocks, power and cooling",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "Panel.qml"
+  },
+  "barWidget": {
+    "displayName": "Hardware Monitor",
+    "description": "CPU and GPU temperatures with a detail panel",
+    "category": "System",
+    "allowMultiple": false
+  }
+}

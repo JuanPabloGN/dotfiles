@@ -33,3 +33,10 @@ o.bind("SUPER + SHIFT + T", "Chromium (trabajo)", { launch = "chromium", focus =
 
 -- Modo juego (sin animaciones ni blur, notificaciones silenciadas)
 o.bind("SUPER + CTRL + G", "Modo juego", "/home/shonpol/.local/bin/modo-juego")
+
+-- Dictation keys from before Alt + Space and Right Alt became the defaults.
+-- Remove these lines to give the keys back to applications.
+if o.dictation_installed and o.dictation_installed() then
+  o.bind("SUPER + CTRL + X", "Toggle dictation", "omarchy-dictation toggle")
+  o.bind_hold("F9", "Start dictation (push-to-talk)", "omarchy-dictation start", "Stop dictation (push-to-talk)", "omarchy-dictation stop")
+end

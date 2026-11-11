@@ -4,6 +4,7 @@ comun       .config/MangoHud
 comun       .local/share/easyeffects
 comun       .config/systemd/user/kraken-curva.service
 comun       .local/bin/bateria-audifonos
+comun       .config/lanza
 omarchy     .config/hypr
 omarchy     .config/omarchy/shell.json
 omarchy     .config/omarchy/bar

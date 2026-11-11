@@ -7,7 +7,7 @@ i9-11900K + RX 6900 XT, con NZXT Kraken X62 y Logitech G PRO X Wireless.
 
 | Carpeta | Qué tiene | ¿Sirve en otra distro? |
 |---|---|---|
-| `comun/` | MangoHud, presets de EasyEffects, curva del Kraken, batería de audífonos | Sí, tal cual |
+| `comun/` | MangoHud, presets de EasyEffects, curva del Kraken, batería de audífonos, idioma de Lanza | Sí, tal cual |
 | `omarchy/` | Hyprland (Lua), barra de Omarchy, reloj, Ghostty, modo juego, Steam con MangoHud | Hay que adaptarlo |
 | `sistema/` | `/etc`: undervolt (LACT), watts CPU (RAPL), NTSYNC, idioma de la hora | Sí, con sudo |
 | `paquetes/` | Listas de paquetes (pacman, AUR, flatpak) | Arch y derivadas |
@@ -31,6 +31,9 @@ git add -A && git commit -m "..." && git push
   `KERNEL_CMDLINE[default]+=" amdgpu.ppfeaturemask=0xffffffff"` y correr `sudo limine-update`.
 - **Disco de juegos (Crucial):** línea en `/etc/fstab` por UUID, montado en `/mnt/disco2` con `defaults,nofail`.
 - **Idioma de la hora:** descomentar `es_CL.UTF-8` en `/etc/locale.gen` y correr `sudo locale-gen`.
+- **Lanza** (editor de opciones de lanzamiento de Steam): no está en los repos ni en AUR aunque
+  aparezca en `paquetes/aur.txt`. Se instala desde el repo privado `JuanPabloGN/lanza` con
+  `gh repo clone JuanPabloGN/lanza ~/Work/lanza && ~/Work/lanza/bin/install`.
 - **Steam:** opción de lanzamiento de Ground Zero
   `PROTON_DISABLE_HIDRAW=0x1E71/0x170E,0x0B05/0x19AF,0x054C/0x0CE6 %command%` + Steam Input desactivado.
 

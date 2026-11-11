@@ -1,4 +1,5 @@
 f3
+lanza
 mpvpaper
 protonplus
 vesktop-bin

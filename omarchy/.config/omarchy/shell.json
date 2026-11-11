@@ -67,8 +67,8 @@
           "id": "omarchy.keyboard-layout"
         },
         {
-          "id": "shonpol.hwmon",
           "gpuName": "RX 6900 XT",
+          "id": "shonpol.hwmon",
           "language": "es"
         },
         {

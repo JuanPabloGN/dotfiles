@@ -111,6 +111,8 @@ noto-fonts-emoji
 nss-mdns
 obs-studio
 obsidian
+ollama
+ollama-vulkan
 omacalc
 omacut
 omarchy

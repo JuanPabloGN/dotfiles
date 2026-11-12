@@ -1,0 +1,63 @@
+#!/bin/bash
+# ia: enciende o apaga la IA local (Ollama + Open WebUI).
+# Uso: ia on | ia off | ia status
+set -euo pipefail
+
+URL="http://127.0.0.1:3000"
+
+case "${1:-}" in
+  on)
+    echo "▶ Encendiendo Ollama..."
+    sudo systemctl start ollama
+
+    echo "▶ Encendiendo Open WebUI..."
+    docker start open-webui >/dev/null
+
+    echo -n "▶ Esperando a Open WebUI"
+    until curl -sf "$URL/health" >/dev/null; do
+      echo -n "."
+      sleep 1
+    done
+    echo " ¡listo!"
+    
+
+
+      setsid -f omarchy-launch-webapp "$URL" >/dev/null 2>&1
+    ;;
+
+  off)
+    echo "■ Apagando Open WebUI..."
+    docker stop open-webui >/dev/null
+
+    echo "■ Apagando Ollama..."
+    sudo systemctl stop ollama
+
+    if [[ -z "$(docker ps -q)" ]]; then
+      echo "■ No quedan contenedores, apagando Docker..."
+      sudo systemctl stop docker.service
+    fi
+
+    notify-send -t 3000 "🎮 IA apagada: VRAM libre para jugar"
+    ;;
+
+     status)
+    if systemctl is-active --quiet docker.service; then
+      echo "Open WebUI: $(docker inspect -f '{{.State.Status}}' open-webui)"
+    else
+      echo "Open WebUI: apagado (Docker detenido)"
+    fi
+
+    if systemctl is-active --quiet ollama; then
+      echo "Ollama:     active"
+      echo "Modelo cargado:"
+      ollama ps
+    else
+      echo "Ollama:     apagado"
+    fi
+    ;;
+
+  *)
+    echo "Uso: ia on | ia off | ia status"
+    exit 1
+    ;;
+esac

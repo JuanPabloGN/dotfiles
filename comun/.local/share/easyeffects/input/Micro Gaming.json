@@ -13,7 +13,7 @@
             "output-gain": 0.0,
             "model-name": "",
             "enable-vad": true,
-            "vad-thres": 50.0,
+            "vad-thres": 30.0,
             "wet": 0.0,
             "release": 20.0
         },
@@ -126,9 +126,9 @@
             "attack": 10.0,
             "release": 120.0,
             "ratio": 3.0,
-            "threshold": -22.0,
+            "threshold": -32.0,
             "knee": -6.0,
-            "makeup": 5.0
+            "makeup": 9.0
         },
         "limiter#0": {
             "bypass": false,

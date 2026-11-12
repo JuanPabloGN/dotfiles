@@ -81,12 +81,8 @@
           "id": "omarchy.network"
         },
         {
-          "exec": "/home/shonpol/.config/omarchy/bar/scripts/audifonos",
-          "id": "audifonos",
-          "interval": 60,
-          "onClick": "easyeffects",
-          "tooltip": "Audífonos",
-          "type": "command"
+          "id": "shonpol.headset",
+          "language": "es"
         },
         {
           "id": "omarchy.audio"

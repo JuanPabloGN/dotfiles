@@ -102,6 +102,18 @@
     },
     "position": "top"
   },
+  "dock": {
+    "pinned": [
+      "org.gnome.Nautilus",
+      "chromium",
+      "zen",
+      "foot",
+      "omacalc",
+      "omawrite",
+      "X",
+      "YouTube"
+    ]
+  },
   "idle": {
     "lock": 300,
     "screensaver": 150

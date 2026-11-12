@@ -3,3 +3,4 @@ lanza
 mpvpaper
 protonplus
 vesktop-bin
+vigia
